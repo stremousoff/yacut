@@ -32,7 +32,7 @@ def index_view():
 
 @app.route('/<string:short_id>', methods=('GET',))
 def redirect_view(short_id):
-    url = URLMap.get(short_id)
-    if url:
-        return redirect(url.original)
+    url_map = URLMap.get(short_id)
+    if url_map:
+        return redirect(url_map.original)
     return render_template('error_pages/404.html'), HTTPStatus.NOT_FOUND

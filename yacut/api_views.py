@@ -34,7 +34,7 @@ def add_url():
 
 @app.route('/api/id/<string:short_id>/', methods=('GET',))
 def get_url(short_id):
-    urlmap = URLMap.get(short_id)
-    if not urlmap:
+    url_map = URLMap.get(short_id)
+    if not url_map:
         raise InvalidAPIUsage(Errors.EMPTY_SHORT_LINK, HTTPStatus.NOT_FOUND)
-    return jsonify({'url': urlmap.original}), HTTPStatus.OK
+    return jsonify({'url': url_map.original}), HTTPStatus.OK
