@@ -44,4 +44,3 @@ def redirect_view(short_id):
     return redirect(
         URLMap.query.filter_by(short=short_id).first_or_404().original
     )
-
