@@ -15,7 +15,7 @@ class InvalidAPIUsage(Exception):
             self.status_code = status_code
 
     def to_dict(self):
-        return dict(message=self.message)
+        return {'message': self.message}
 
 
 class ShortLinkExistsException(Exception):
@@ -42,5 +42,7 @@ def page_not_found(error):
 
 @app.errorhandler(500)
 def internal_error(error):
-    return (render_template("error_pages/500.html"),
-            HTTPStatus.INTERNAL_SERVER_ERROR)
+    return (
+        render_template("error_pages/500.html"),
+        HTTPStatus.INTERNAL_SERVER_ERROR,
+    )
